@@ -23,7 +23,7 @@ PADA MASING-MASING TEST CASE SUDAH TERDAPAT RANGE TERBESAR DAN TERKECIL
 
 function missingNum(arr) {
   //code here
-  let num = arr.flat().filter(e => String(e).match(/\d/))
+  let num = arr.flat().filter(e => typeof e === 'number')
 
 let sort = num.sort((a,b) => a-b)
 let newArr = []

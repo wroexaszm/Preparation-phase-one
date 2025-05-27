@@ -1,4 +1,3 @@
-// Create a "close" button and append it to each list item
 var myNodelist = document.getElementsByTagName("LI");
 var i;
 for (i = 0; i < myNodelist.length; i++) {
@@ -9,17 +8,16 @@ for (i = 0; i < myNodelist.length; i++) {
   myNodelist[i].appendChild(span);
 }
 
-// Click on a close button to hide the current list item
+
 var close = document.getElementsByClassName("close");
 var i;
 for (i = 0; i < close.length; i++) {
   close[i].onclick = function() {
     var div = this.parentElement;
-    div.style.display = "none";
+    div.remove();
   }
 }
 
-// Add a "checked" symbol when clicking on a list item
 var list = document.querySelector('ul');
 list.addEventListener('click', function(ev) {
   if (ev.target.tagName === 'LI') {
@@ -27,7 +25,6 @@ list.addEventListener('click', function(ev) {
   }
 }, false);
 
-// Create a new list item when clicking on the "Add" button
 function newElement() {
   var li = document.createElement("li");
   var inputValue = document.getElementById("myInput").value;
@@ -46,10 +43,55 @@ function newElement() {
   span.appendChild(txt);
   li.appendChild(span);
 
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-      var div = this.parentElement;
-      div.style.display = "none";
+  span.onclick = function() {
+    var div = this.parentElement;
+    div.remove();
+  }
+}
+
+function searchTasks() {
+  var input = document.getElementById("searchInput");
+  var filter = input.value.toLowerCase();
+  var ul = document.getElementById("myUL");
+  var li = ul.getElementsByTagName("li");
+  
+  for (var i = 0; i < li.length; i++) {
+
+    var txtValue = li[i].textContent || li[i].innerText;
+
+    txtValue = txtValue.replace(/×/g, '').trim();
+    
+    if (txtValue.toLowerCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
     }
   }
 }
+
+function toggleSearch() {
+  var searchContainer = document.getElementById("searchContainer");
+  var searchInput = document.getElementById("searchInput");
+  
+  searchContainer.classList.toggle("active");
+  
+  if (searchContainer.classList.contains("active")) {
+    setTimeout(function() {
+      searchInput.focus();
+    }, 300);
+  } else {
+    searchInput.value = "";
+
+    var ul = document.getElementById("myUL");
+    var li = ul.getElementsByTagName("li");
+    for (var i = 0; i < li.length; i++) {
+      li[i].style.display = "";
+    }
+  }
+}
+
+document.getElementById("myInput").addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    newElement();
+  }
+});

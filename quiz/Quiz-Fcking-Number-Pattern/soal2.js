@@ -49,7 +49,6 @@ NOTE:
 
 function squareNumber(num) {
   //code here
-
   if(num < 3){
     return 'Minimal input adalah 3'
   }
@@ -57,26 +56,29 @@ function squareNumber(num) {
   let newArr = []
   let angka = 0;
 
-  for(let i = 0; i < num ;i++){
+  // Membuat array 2D dengan angka berurutan
+  for(let i = 0; i < num; i++){
     let arrIsi = []
-    for(let j = 0; j < num ;j++){
-        angka+=1
-        arrIsi.push(angka)
+    for(let j = 0; j < num; j++){
+      angka += 1
+      arrIsi.push(angka)
     }
     newArr.push(arrIsi)
   }
 
+  for(let i = 1; i < newArr.length; i += 2){
+    newArr[i].reverse()
+  }
 
-
-  for(let i = 0; i < newArr.length ;i++){
-    for(let j = 0; j < newArr[i].length ;j++){
-        if(newArr[i][j] % 4 == 0){
-            newArr[i][j] = '#'
-        } else if(newArr[i][j] % 2 == 0){
-            newArr[i][j] = 'o'
-        } else if(newArr[i][j] % 2 == 1){
-            newArr[i][j] = 'x'
-        }
+  for(let i = 0; i < newArr.length; i++){
+    for(let j = 0; j < newArr[i].length; j++){
+      if(newArr[i][j] % 4 == 0){
+        newArr[i][j] = '#'
+      } else if(newArr[i][j] % 2 == 0){
+        newArr[i][j] = 'o'
+      } else if(newArr[i][j] % 2 == 1){
+        newArr[i][j] = 'x'
+      }
     }
   }
 

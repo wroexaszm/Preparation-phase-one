@@ -25,24 +25,18 @@ output: ['dont', 'know', 'what', 'have', 'lose']
 
 function averageLengthWord(words) {
   //code here
-
   let noSpace = words.match(/\w+/g)
 
   let sum = 0
-  let per = 0
-  for(let i = 0; i<noSpace.length; i++){
-    let count = 0
-    for(let j = 0; j<noSpace[i].length; j++){
-        count+=1
-    }
-    per+=1
-    sum+=count
+  // Sudah diubah jadi 1 loop saja
+  for(let i = 0; i < noSpace.length; i++){
+    sum += noSpace[i].length
   }
 
-  let rata = Math.round(sum/per)
+  let rata = Math.round(sum / noSpace.length)
 
   let newArr = []
-  for(let i = 0; i<noSpace.length; i++){
+  for(let i = 0; i < noSpace.length; i++){
     if(noSpace[i].length === rata){
         newArr.push(noSpace[i])
     }
@@ -51,6 +45,6 @@ function averageLengthWord(words) {
   return newArr
 
 }
-console.log(averageLengthWord('Do you want to become a great coder ?')); // ['you']
+console.log(averageLengthWord('Do you want to become a great coder ?')); // ['you'] //harusnya 'want', karena pembulatan rata-rata 3.5 itu 4 *correct me if i'm wrong sir hehe
 console.log(averageLengthWord('You dont know what you have until you lose it!')); // [ 'dont','know','what','have','lose']
 console.log(averageLengthWord('I am diligent')); // []

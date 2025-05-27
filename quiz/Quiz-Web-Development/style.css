@@ -49,26 +49,8 @@ input {
   margin: 0;
   border: 1px solid #dee2e6;
   border-radius: 4px;
-  width: 75%;
   padding: 8px 16px;
   font-size: 16px;
-}
-
-.addBtn {
-  padding: 8px 16px;
-  width: 23%;
-  margin-left: 2%;
-  background: #228be6;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.2s;
-  border-radius: 4px;
-  border: none;
-}
-
-.addBtn:hover {
-  background-color: #1c7ed6;
 }
 
 .close {
@@ -86,4 +68,84 @@ input {
 
 .close:hover {
   color: #ff6b6b;
+}
+
+/* Styles untuk search functionality */
+.search-btn {
+  padding: 8px 12px;
+  margin-left: 8px;
+  background: #6c757d;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+  border-radius: 4px;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-btn:hover {
+  background-color: #5a6268;
+}
+
+.search-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background-color: #f8f9fa;
+}
+
+.search-container.active {
+  height: 60px;
+  padding: 12px 24px;
+  border-bottom: 1px solid #eee;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 8px 16px;
+  font-size: 16px;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+  outline: none;
+  border-color: #228be6;
+  box-shadow: 0 0 0 2px rgba(34, 139, 230, 0.2);
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.input-container input {
+  flex: 1;
+  min-width: 0;
+}
+
+.addBtn {
+  padding: 8px 16px;
+  background: #228be6;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+  border-radius: 4px;
+  border: none;
+  white-space: nowrap;
+}
+
+.addBtn:hover {
+  background-color: #1c7ed6;
 }
